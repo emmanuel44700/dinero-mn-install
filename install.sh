@@ -35,13 +35,13 @@ echo $STRING1
     sleep 10    
 
 # update package and upgrade Ubuntu
-    sudo apt-get -y update
-    sudo apt-get -y upgrade
-    sudo apt-get -y autoremove
-    sudo apt-get install wget nano htop -y
+    apt-get -y update
+    apt-get -y upgrade
+    apt-get -y autoremove
+    apt-get install wget nano htop -y
     clear
 echo $STRING5
-    sudo apt-get -y install aptitude
+    apt-get -y install aptitude
 
 #Generating Random Passwords
     password=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
@@ -50,16 +50,16 @@ echo $STRING5
 echo $STRING6
     if [[ ("$install_fail2ban" == "y" || "$install_fail2ban" == "Y" || "$install_fail2ban" == "") ]]; then
     cd ~
-    sudo aptitude -y install fail2ban
-    sudo service fail2ban restart 
+    aptitude -y install fail2ban
+    service fail2ban restart 
     fi
     if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
-    sudo apt-get install ufw
-    sudo ufw default deny incoming
-    sudo ufw default allow outgoing
-    sudo ufw allow ssh
-    sudo ufw allow 26285/tcp
-    sudo ufw enable -y
+    apt-get install ufw
+    ufw default deny incoming
+    ufw default allow outgoing
+    ufw allow ssh
+    ufw allow 26285/tcp
+    ufw enable -y
     fi
 
 
@@ -78,8 +78,8 @@ masternode=1
 masternodeprivkey='$key'
 externalip='$ip'
 
-' | sudo -E tee ~/.dinerocore/dinero.conf >/dev/null 2>&1
-    sudo chmod 0600 ~/.dinerocore/dinero.conf
+' | -E tee ~/.dinerocore/dinero.conf >/dev/null 2>&1
+   chmod 0600 ~/.dinerocore/dinero.conf
 
 echo 'dinero.conf created'
 
@@ -95,8 +95,8 @@ sleep 40
 
 #Install Dinero Daemon
     wget https://github.com/dinerocoin/dinero/releases/download/v1.0.1.1/dinerocore-1.0.1.1-linux64.tar.gz
-    sudo tar -xzvf dinerocore-1.0.1.1-linux64.tar.gz
-    sudo rm dinerocore-1.0.1.1-linux64.tar.gz
+    tar -xzvf dinerocore-1.0.1.1-linux64.tar.gz
+    rm dinerocore-1.0.1.1-linux64.tar.gz
     dinerocore-1.0.1/bin/dinerod -daemon
     clear
  
@@ -113,11 +113,11 @@ sleep 10
 
 #Install Sentinel
 cd /root/.dinerocore
-sudo apt-get install -y git python-virtualenv
-sudo git clone https://github.com/dinerocoin/sentinel.git
+apt-get install -y git python-virtualenv
+git clone https://github.com/dinerocoin/sentinel.git
 cd sentinel
 export LC_ALL=C
-sudo apt-get install -y virtualenv
+apt-get install -y virtualenv
 virtualenv venv
 venv/bin/pip install -r requirements.txt
 
