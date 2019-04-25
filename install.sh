@@ -65,7 +65,7 @@ echo $STRING6
 
 #Create dinero.conf
 
-sudo mkdir .dinerocore
+mkdir .dinerocore
 echo '
 rpcuser='$password'
 rpcpassword='$password2'
