@@ -78,7 +78,7 @@ masternode=1
 masternodeprivkey='$key'
 externalip='$ip'
 
-' | -E tee ~/.dinerocore/dinero.conf >/dev/null 2>&1
+' | tee ~/.dinerocore/dinero.conf >/dev/null 2>&1
    chmod 0600 ~/.dinerocore/dinero.conf
 
 echo 'dinero.conf created'
